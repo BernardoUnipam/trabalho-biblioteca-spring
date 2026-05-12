@@ -1,0 +1,242 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Requisicoes-projeto-biblioteca-etapa-2
+meta:
+  id: wrk_43ae4fce0bf14891ac5ce85d75bda62c
+  created: 1778610962898
+  modified: 1778617378859
+  description: ""
+collection:
+  - url: http://localhost:8080/categorias
+    name: Salvar Categoria 1
+    meta:
+      id: req_8829b4b1ad8c4188b24d23d51dc1aa98
+      created: 1778610962903
+      modified: 1778613781162
+      isPrivate: false
+      description: ""
+      sortKey: -1778610962903
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Ficção Científica"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/categorias
+    name: Salvar Categoria 2
+    meta:
+      id: req_a14feba9bdbf4cad8668df9161abf493
+      created: 1778616927371
+      modified: 1778616986927
+      isPrivate: false
+      description: ""
+      sortKey: -1778616927371
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Fantasia"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/livros
+    name: Criar Livro 1
+    meta:
+      id: req_e8149a1585a74b72aae3ef928c1aeebf
+      created: 1778617060025
+      modified: 1778617085401
+      isPrivate: false
+      description: ""
+      sortKey: -1778617060025
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "titulo": "Duna",
+          "isbn": "123456789",
+          "categoria": { "id": 1 }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/livros
+    name: Criar Livro 2
+    meta:
+      id: req_2d82ee86a3bd4c0a832467918577c3b9
+      created: 1778617175994
+      modified: 1778617208555
+      isPrivate: false
+      description: ""
+      sortKey: -1778617175994
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "titulo": "O Senhor dos Anéis",
+          "isbn": "987654321",
+          "categoria": { "id": 2 }
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/livros
+    name: Listar Todos os Livros
+    meta:
+      id: req_48583cc67d45470c978fc2d977eb6a9d
+      created: 1778617221004
+      modified: 1778617245685
+      isPrivate: false
+      description: ""
+      sortKey: -1778617221004
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/livros?tituloExato=Duna
+    name: Busca por Título Exato
+    meta:
+      id: req_18723a81ebb246e1beba22ea8a691f78
+      created: 1778617257319
+      modified: 1778617275095
+      isPrivate: false
+      description: ""
+      sortKey: -1778617257319
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/livros?tituloParte=senhor
+    name: Busca por Parte do Título
+    meta:
+      id: req_a0939084b68c415fb22553029eec90d5
+      created: 1778617285947
+      modified: 1778617302076
+      isPrivate: false
+      description: ""
+      sortKey: -1778617285947
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/livros?categoriaId=2
+    name: Busca por Categoria
+    meta:
+      id: req_7d2102a8200d4d669c6e1b56d58398fa
+      created: 1778617313340
+      modified: 1778617329700
+      isPrivate: false
+      description: ""
+      sortKey: -1778617313340
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_9c4fd035255aabf0e5bb81c148776810fd6a1740
+    created: 1778610962900
+    modified: 1778610962900
+environments:
+  name: Base Environment
+  meta:
+    id: env_9c4fd035255aabf0e5bb81c148776810fd6a1740
+    created: 1778610962899
+    modified: 1778610962899
+    isPrivate: false

@@ -9,7 +9,7 @@ Trabalho prático desenvolvido para a disciplina de **Desenvolvimento Web II** (
 O sistema permite o cadastro de Livros e sua organização por Categorias, sendo que um livro deve obrigatoriamente pertencer a uma categoria (Relacionamento 1:N). O desenvolvimento foi dividido em duas etapas:
 
 - [x] **Etapa 1: Estrutura e Mapeamento** (Concluída)
-- [ ] **Etapa 2: Consultas e Testes** (Pendente - Prazo: 10/06 a 11/06)
+- [x] **Etapa 2: Consultas e Testes** (Concluída - Entrega: 10/06 a 11/06)
 
 ---
 
@@ -152,5 +152,88 @@ No menu lateral esquerdo do console H2, as tabelas:
 estarão visíveis e prontas para receber dados.
 
 ---
+
+---
+
+## ✅ Etapa 2: Consultas e Testes (Concluída)
+
+Nesta fase final, foi implementada a lógica de busca no banco de dados e a exposição dessas funcionalidades através de uma API REST, além da configuração dos testes no Insomnia.
+
+### 1. Consultas (Query Methods)
+
+#### Regra
+No repositório de Livros, implementar pelo menos 3 métodos de busca por nome:
+- Busca por título exato.
+- Busca por parte do título (ignorando maiúsculas/minúsculas).
+- Busca de livros por uma categoria específica.
+
+#### Solução
+Os métodos foram declarados na interface `LivroRepository`, aproveitando a inteligência do Spring Data JPA para gerar as queries automaticamente com base na nomenclatura dos métodos:
+
+```java
+// 1. Busca por título exato
+List<Livro> findByTitulo(String titulo);
+
+// 2. Busca por parte do título (ignorando maiúsculas/minúsculas)
+List<Livro> findByTituloContainingIgnoreCase(String titulo);
+
+// 3. Busca por categoria específica
+List<Livro> findByCategoriaId(Long categoriaId);
+```
+
+## 2. Controladores (Controllers)
+
+### Regra
+Criar os métodos (endpoints) para:
+
+- Salvar uma nova `Categoria`.
+- Salvar um novo `Livro`.
+- Listar todos os livros e realizar as buscas criadas no item anterior.
+
+### Solução
+Foram criadas duas classes no pacote `controllers` utilizando as anotações `@RestController` e `@RequestMapping`.
+
+#### CategoriaController
+Recebe requisições `POST` em `/categorias` para salvar novas categorias utilizando `@RequestBody`.
+
+#### LivroController
+
+- Recebe requisições `POST` em `/livros` para salvar novos livros.
+- Recebe requisições `GET` em `/livros` para listar os livros.
+
+Foi utilizada a anotação:
+
+```java
+@RequestParam(required = false)
+```
+
+para capturar os parâmetros de busca na URL (`tituloExato`, `tituloParte`, `categoriaId`).
+
+Caso nenhum parâmetro seja informado, o método retorna todos os livros utilizando:
+
+```java
+findAll()
+```
+## 3. Testes e Coleção do Insomnia
+
+### Regra
+Exportar o arquivo de projeto do Insomnia contendo as requisições (Requests) criadas para testar cada funcionalidade da API e popular o banco.
+
+#### Solução e Critério de Sucesso
+O arquivo contendo a coleção completa de testes foi exportado e encontra-se na raiz do projeto com o nome Insomnia_Biblioteca.json.
+
+#### Como testar (Critério de Sucesso):
+
+Com a aplicação rodando, abra o Insomnia.
+
+Clique em Create -> Import e selecione o arquivo Insomnia_Biblioteca.json.
+
+A coleção "Trabalho API Biblioteca" aparecerá com todas as requisições pré-configuradas.
+
+Execute as requisições de POST para popular o banco com Categorias e Livros.
+
+Em seguida, dispare as requisições de GET (Ex: Buscar por parte do título).
+
+A API retornará a lista de livros no formato JSON com Status 200 OK, validando com sucesso o funcionamento do sistema.
 
 **Desenvolvido por Bernardo Willian**
